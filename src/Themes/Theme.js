@@ -85,10 +85,11 @@ export const useStyles = makeStyles({
   export const gridStyle = makeStyles((theme) => ({
     root: {
       margin: theme.spacing(0),
+    
     flexGrow: 0,
     maxWidth: `100%`,
     flexBasis: `100%`,
-      justifyItems:"center"
+      justifyContent:"center"
     },
     cardStyle:{
       minHeight:150,
