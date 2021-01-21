@@ -62,7 +62,7 @@ const skeletonArray=[{broj:1},{broj:2},{broj:3},{broj:4},{broj:5},{broj:6}];
     <Paper>
       <Banner bg={"https://media.nhl.com/site/asset/public/images/2020/03/NHLShieldBlack-06124818.jpg"} title={"Stats"} title2={"Your choice"} children={<HomeButton text={"Back"}/>}/>
       <UnderBanner name={teams[slug].name} nameCity={teams[slug].venue.name} city={teams[slug].venue.city} />
-      <Grid container spacing={3} justify="space-around" className={classes.root}>
+      <Grid container spacing={3} justify="center" className={classes.root}>
         <StatThree data={{title:"season stat",firstt:"wins",firstv:stat.wins,secondt:"loses",secondv:stat.losses,thirdt:"wins(%)",thirdv:stat.ptPctg}}/>
         <StatThree data={{title:"season ranking",firstt:"wins",firstv:reqstat.wins,secondt:"loses",secondv:reqstat.losses,thirdt:"wins(%)",thirdv:reqstat.ptPctg}}/>
         <StatThree data={{title:"Season realization",firstt:"GPG",firstv:stat.goalsPerGame,secondt:"PPG",secondv:stat.powerPlayGoals,thirdt:"Shoots PG",thirdv:stat.shotsPerGame}}/>

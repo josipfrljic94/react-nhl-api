@@ -87,8 +87,8 @@ export const useStyles = makeStyles({
       margin: theme.spacing(0),
     flexGrow: 0,
     maxWidth: `100%`,
-    flexBasis: `100%`
-      
+    flexBasis: `100%`,
+      justifyItems:"center"
     },
     cardStyle:{
       minHeight:150,
