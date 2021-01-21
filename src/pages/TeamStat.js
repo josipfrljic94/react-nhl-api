@@ -6,9 +6,7 @@ import {useParams} from "react-router-dom";
 import StatThree from "../Components/StatThree";
 import Banner from "../Components/Banner";
 import UnderBanner from "../Components/UnderBanner";
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import {Card} from '@material-ui/core';
+import {Card, Container,Grid,Paper } from '@material-ui/core';
 import {gridStyle} from "../Themes/Theme";
 import Skeleton from '@material-ui/lab/Skeleton';
 import HomeButton from '../Components/Button';
@@ -62,7 +60,8 @@ const skeletonArray=[{broj:1},{broj:2},{broj:3},{broj:4},{broj:5},{broj:6}];
     <Paper>
       <Banner bg={"https://media.nhl.com/site/asset/public/images/2020/03/NHLShieldBlack-06124818.jpg"} title={"Stats"} title2={"Your choice"} children={<HomeButton text={"Back"}/>}/>
       <UnderBanner name={teams[slug].name} nameCity={teams[slug].venue.name} city={teams[slug].venue.city} />
-      <Grid container spacing={3} justify="center" className={classes.root}>
+      <Container maxWidth={false}>
+      <Grid container spacing={2} className={classes.root}>
         <StatThree data={{title:"season stat",firstt:"wins",firstv:stat.wins,secondt:"loses",secondv:stat.losses,thirdt:"wins(%)",thirdv:stat.ptPctg}}/>
         <StatThree data={{title:"season ranking",firstt:"wins",firstv:reqstat.wins,secondt:"loses",secondv:reqstat.losses,thirdt:"wins(%)",thirdv:reqstat.ptPctg}}/>
         <StatThree data={{title:"Season realization",firstt:"GPG",firstv:stat.goalsPerGame,secondt:"PPG",secondv:stat.powerPlayGoals,thirdt:"Shoots PG",thirdv:stat.shotsPerGame}}/>
@@ -70,7 +69,7 @@ const skeletonArray=[{broj:1},{broj:2},{broj:3},{broj:4},{broj:5},{broj:6}];
         <StatThree data={{title:"Defence stat",firstt:"Conced/PG",firstv:stat.goalsAgainstPerGame,secondt:"AGARatio",secondv:stat.evGGARatio,thirdt:"Allowed",thirdv:stat.shotsAllowed}}/>
         <StatThree data={{title:"Defence ranking",firstt:"Conced/PG",firstv:reqstat.goalsAgainstPerGame,secondt:"AGARatio",secondv:reqstat.evGGARatio,thirdt:"Allowed",thirdv:reqstat.shotsAllowed}}/>
       </Grid>
-
+      </Container>
       </Paper>
     
           

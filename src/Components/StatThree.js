@@ -9,10 +9,10 @@ const StatThree = ({data}) => {
     const classes = gridStyle();
     return (
        
-              <Grid item xs={12} sm={6} md={5} lg={4}>
+              <Grid item xs={12} sm={6} md={6} lg={4} >
         <Card className={classes.cardStyle}>
         <Typography variant="h4" component="h4" className={classes.title} color="primary">{data.title}</Typography>
-        <Grid container justify="space-around">
+        <Grid container  justify="space-around">
         <Paper color="primary" className={classes.paper}>
        <Typography variant="h6" component="h6" className={classes.title2} >{data.firstt}</Typography>
          {data.firstv}                
