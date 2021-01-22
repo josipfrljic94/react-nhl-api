@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useCallback} from 'react';
 import {Link} from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
@@ -13,12 +13,14 @@ import Skeleton from '@material-ui/lab/Skeleton';
 const Home = ({teams,fetchTeams,dark}) => {
 
   const classes = HomeStyles();
-
+  const triggerFetchTeams = useCallback(() => {
+    fetchTeams()
+  }, [fetchTeams]); 
   useEffect(() => {
     
-    fetchTeams();
+    triggerFetchTeams()
   
-  }, []); 
+  }, [triggerFetchTeams]); 
 
   const skeletonArray=[{broj:1},{broj:2},{broj:3},{broj:4},{broj:5},{broj:6}]
 

@@ -21,7 +21,7 @@ export const fetchTeams = () => async (dispatch) => {
       dispatch({ type: constants.FETCH_TEAMNAME_REQUEST, payload: id });
       const res = await fetch(`https://statsapi.web.nhl.com/api/v1/teams/`);
       const data= await res.json();
-      let teamName= await data.teams.find(team=>team.id == id);
+      let teamName= await data.teams.find(team=>team.id === id);
       console.log(teamName);
 
       dispatch({ type: constants.FETCH_TEAMNAME_SUCCESS, payload: teamName});

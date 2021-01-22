@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useCallback} from 'react';
 import { connect } from "react-redux";
 import {  fetchTeam,fetchTeamName} from "../actions/teamActions";
 import {useParams} from "react-router-dom";
@@ -16,15 +16,19 @@ const TeamStat = ({team,fetchTeam,fetchTeamName,loading,stat,reqstat,teamName}) 
 
   
     let slug=Number( useParams().hash); 
-   
+
+    const triggerFetchTeam = useCallback(() => {
+      fetchTeam(slug);
+      fetchTeamName(slug)
+    }, [fetchTeam,fetchTeamName,slug]); 
+
     
     useEffect(() => {
-      fetchTeam(slug);
-    }, []); 
+      triggerFetchTeam();
+    }, [triggerFetchTeam]);
+   
+   
 
-    useEffect(() => {
-      fetchTeamName(slug);
-      }, []); 
     
 const skeletonArray=[{broj:1},{broj:2},{broj:3},{broj:4},{broj:5},{broj:6}];
 
