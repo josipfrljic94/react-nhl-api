@@ -1,7 +1,6 @@
 import React,{useEffect} from 'react';
 import { connect } from "react-redux";
-import { fetchTeam } from "../actions/teamActions";
-import { fetchTeams } from "../actions/teamActions";
+import {  fetchTeam,fetchTeamName} from "../actions/teamActions";
 import {useParams} from "react-router-dom";
 import StatThree from "../Components/StatThree";
 import Banner from "../Components/Banner";
@@ -11,7 +10,7 @@ import {gridStyle} from "../Themes/Theme";
 import Skeleton from '@material-ui/lab/Skeleton';
 import HomeButton from '../Components/Button';
 
-const TeamStat = ({team,fetchTeam,fetchTeams,loading,stat,reqstat,teams}) => {
+const TeamStat = ({team,fetchTeam,fetchTeamName,loading,stat,reqstat,teamName}) => {
 
     const classes = gridStyle();
 
@@ -24,12 +23,12 @@ const TeamStat = ({team,fetchTeam,fetchTeams,loading,stat,reqstat,teams}) => {
     }, []); 
 
     useEffect(() => {
-        fetchTeams();
+      fetchTeamName(slug);
       }, []); 
     
 const skeletonArray=[{broj:1},{broj:2},{broj:3},{broj:4},{broj:5},{broj:6}];
 
-      if(!team  || !teams || loading){
+      if(!team  || !teamName || loading){
           return(
             <Paper style={{marginTop:"40px"}}>  
                <Skeleton  style={{height:"60vh"}}/>
@@ -59,7 +58,7 @@ const skeletonArray=[{broj:1},{broj:2},{broj:3},{broj:4},{broj:5},{broj:6}];
         
     <Paper>
       <Banner bg={"https://media.nhl.com/site/asset/public/images/2020/03/NHLShieldBlack-06124818.jpg"} title={"Stats"} title2={"Your choice"} children={<HomeButton text={"Back"}/>}/>
-      <UnderBanner name={teams[slug].name} nameCity={teams[slug].venue.name} city={teams[slug].venue.city} />
+      <UnderBanner name={teamName.name} nameCity={teamName.venue.name} city={teamName.venue.city} />
       <Container maxWidth={false}>
       <Grid container spacing={2} className={classes.root}>
         <StatThree data={{title:"season stat",firstt:"wins",firstv:stat.wins,secondt:"loses",secondv:stat.losses,thirdt:"wins(%)",thirdv:stat.ptPctg}}/>
@@ -79,7 +78,7 @@ const skeletonArray=[{broj:1},{broj:2},{broj:3},{broj:4},{broj:5},{broj:6}];
 
 }
 const mapStateToProps=(state)=>({
-  teams: state.teams.teams,
+  teamName: state.teamName.teamName,
     team: state.team.team,
     stat: state.team.stat,
     reqstat: state.team.regularstat,
@@ -87,7 +86,7 @@ const mapStateToProps=(state)=>({
     
    
    })
-   export default connect(mapStateToProps,{fetchTeam,fetchTeams})(TeamStat);
+   export default connect(mapStateToProps,{fetchTeam,fetchTeamName})(TeamStat);
 
 
    

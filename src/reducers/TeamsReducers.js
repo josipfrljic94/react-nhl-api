@@ -16,6 +16,20 @@ export const TeamsReducer=(state={}, action)=> {
   }
 }
 
+export const TeamNameReducer=(state={}, action)=> {
+  const{type,payload}=action;
+  switch (type) {
+    case constants.FETCH_TEAMNAME_REQUEST:
+      return {loading: true} ;
+    case constants.FETCH_TEAMNAME_SUCCESS:
+      return {...state,  teamName: payload,loading: false,};
+    case constants.FETCH_TEAMNAME_FAIL:
+      return { loading: false, team: payload };
+    default:
+      return state;
+  }
+}
+
   export const TeamReducer=(state={}, action)=> {
     const{type,payload}=action;
     switch (type) {

@@ -16,6 +16,22 @@ export const fetchTeams = () => async (dispatch) => {
     }
   };
 
+  export const fetchTeamName = (id) => async (dispatch) => {
+    try {
+      dispatch({ type: constants.FETCH_TEAMNAME_REQUEST, payload: id });
+      const res = await fetch(`https://statsapi.web.nhl.com/api/v1/teams/`);
+      const data= await res.json();
+      let teamName= await data.teams.find(team=>team.id == id);
+      console.log(teamName);
+
+      dispatch({ type: constants.FETCH_TEAMNAME_SUCCESS, payload: teamName});
+    } catch (error) {
+        console.log(error);
+      dispatch({ type: constants.FETCH_TEAMNAME_FAIL, payload: error.message });
+    }
+  };
+
+
 
 
   export const fetchTeam = (id) => async (dispatch) => {
